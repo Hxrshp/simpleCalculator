@@ -1,0 +1,142 @@
+html, body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+
+  /* Solid background color */
+  background: #091020;
+
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #fff;
+}
+
+/* Calculator container */
+.calculator {
+  position: relative;
+  width: min(420px, 92vw);
+  border-radius: 28px;
+
+  background: radial-gradient(circle at 50% 40%, rgba(74, 140, 231, 0.2) 0%, rgba(29, 38, 65, 0.3) 55%, rgba(9, 16, 32, 0.4) 100%);
+
+  box-shadow:
+    0 24px 62px rgba(0, 0, 0, 0.48),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(12px);
+  overflow: hidden;
+}
+
+/* ✅ Glow fix for seamless blending */
+.calculator::before {
+  content: "";
+  position: absolute;
+  inset: -50px;
+  background: radial-gradient(circle, rgba(74,140,231,0.25), transparent 70%);
+  z-index: -1;
+  filter: blur(25px);
+}
+
+/* Display */
+#display {
+  width: 100%;
+  border: none;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0.03)
+  );
+
+  color: #e9eeff;
+  font-size: clamp(1.8rem, 2.5vw, 2.6rem);
+  text-align: right;
+
+  padding: 20px;
+  box-sizing: border-box;
+  outline: none;
+
+  letter-spacing: 0.04em;
+  height: 72px;
+
+  text-shadow: 0 0 5px rgba(215, 225, 255, 0.5);
+
+  border-radius: 18px;
+  margin-bottom: 14px;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* Flash animation */
+#display.flash {
+  box-shadow:
+    0 0 18px rgba(94, 186, 255, 0.75),
+    inset 0 0 12px rgba(94, 186, 255, 0.35);
+}
+
+/* Buttons grid */
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  padding: 14px;
+}
+
+/* Base button style */
+button {
+  border: none;
+  border-radius: 14px;
+  padding: 17px 0;
+
+  font-size: 1.45rem;
+  font-weight: 700;
+
+  color: #f3f6ff;
+  cursor: pointer;
+
+  transition:
+    transform 0.16s ease,
+    box-shadow 0.16s ease,
+    background 0.24s ease;
+
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.25);
+
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Hover & click */
+button:hover {
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(1px);
+  box-shadow: 0 4px 7px rgba(0, 0, 0, 0.35);
+}
+
+/* Focus outline */
+button:focus {
+  outline: 0;
+  box-shadow: 0 0 0 3px rgba(99, 182, 255, 0.45);
+}
+
+/* Special buttons */
+button[data-action="clear"],
+button[data-action="delete"] {
+  background: linear-gradient(135deg, #ff5f6d, #d52f50);
+}
+
+button[data-action="operator"] {
+  background: linear-gradient(135deg, #1f8cff, #1363b4);
+}
+
+button[data-action="equals"] {
+  background: linear-gradient(135deg, #f4b400, #f56f10);
+}
+
+/* Zero button spans 2 columns */
+button.zero {
+  grid-column: span 2;
+}
