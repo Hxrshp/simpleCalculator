@@ -1,4 +1,4 @@
-# 🧮 Simple Calculator Web App
+# Simple Calculator Web App
 
 A clean and responsive calculator built using **HTML, CSS, and JavaScript**.
 This project performs basic arithmetic operations with improved user experience and UI design.
